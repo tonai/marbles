@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-import { IModel, loadModels } from "./helpers/collection.ts";
-import Game from "./components/Game/index.tsx";
+import { loadModels } from "./helpers/collection.ts";
 
 import { blocks } from "./blocks";
 import { ballModel } from "./constants/blocks.ts";
 import { useGame } from "./store/game.ts";
 import { RapierRigidBody } from "@react-three/rapier";
+import StartScreen from "./components/StartScreen/index.tsx";
 
 const modelList = new Set(
   Object.entries(blocks)
@@ -16,12 +16,13 @@ const modelList = new Set(
 );
 
 function App() {
-  const [models, setModels] = useState<Record<string, IModel>>();
   const ballRef = useRef<RapierRigidBody>(null);
+  const models = useGame((state) => state.models);
   const playerId = useGame((state) => state.playerId);
   const setBallRef = useGame((state) => state.setBallRef);
   const setGameState = useGame((state) => state.setGameState);
   const setPlayerId = useGame((state) => state.setPlayerId);
+  const setModels = useGame((state) => state.setModels);
 
   useEffect(() => {
     loadModels(Array.from(modelList), "/models/").then(setModels);
@@ -46,7 +47,7 @@ function App() {
     return;
   }
 
-  return <Game models={models} />;
+  return <StartScreen />;
 }
 
 export default App;

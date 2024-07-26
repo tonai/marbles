@@ -6,12 +6,12 @@ import { ILevel, ISelectedJoint } from "../../types";
 import styles from "./styles.module.css";
 import { blocks } from "../../blocks";
 import { partMenu } from "../../constants/blocks";
+import { useGame } from "../../store/game";
+import { serializeLevel } from "../../helpers/level";
 
 interface IHeaderProps {
-  camera?: 'free' | 'fp';
   jointSelection?: ISelectedJoint;
   level: ILevel;
-  onCamera: () => void;
   onRemove: () => void;
   onSelect: (part: string) => void;
   onStart: () => void;
@@ -20,12 +20,10 @@ interface IHeaderProps {
   selectedPart?: string;
 }
 
-export default function Header(props: IHeaderProps) {
+export default function EditorHeader(props: IHeaderProps) {
   const {
-    camera,
     jointSelection,
     level,
-    onCamera,
     onRemove,
     onSelect,
     onStart,
@@ -35,7 +33,7 @@ export default function Header(props: IHeaderProps) {
   } = props;
   const [menuOpen, setMenuOpen] = useState(false);
   const [subMenu, setSubMenu] = useState<string>();
-  const canStart = level.find((block) => block.id === "end");
+  const start = useGame((state) => state.start);
 
   function handleMenu() {
     setMenuOpen((x) => !x);
@@ -58,7 +56,11 @@ export default function Header(props: IHeaderProps) {
         <div className={styles.menu}>
           <div className={styles.subMenu}>
             {Object.keys(partMenu).map((label) => (
-              <button key={label} type="button" onClick={() => handleSubMenu(label)}>
+              <button
+                key={label}
+                type="button"
+                onClick={() => handleSubMenu(label)}
+              >
                 {label}
               </button>
             ))}
@@ -76,7 +78,13 @@ export default function Header(props: IHeaderProps) {
                     onClick={() => onSelect(part)}
                     type="button"
                   >
-                    <img alt={part} src={`/previews/${part}.png`} />
+                    {blocks[part].part ? (
+                      <div className={styles.placeholder}>
+                        {blocks[part].part}
+                      </div>
+                    ) : (
+                      <img alt={part} src={`/previews/${part}.png`} />
+                    )}
                   </button>
                 ))}
             </div>
@@ -94,16 +102,17 @@ export default function Header(props: IHeaderProps) {
           Remove last item
         </button>
       )}
-      {canStart && (
-        <button type="button" onClick={onStart}>
-          Start
-        </button>
-      )}
-      {camera && (
-        <button type="button" onClick={onCamera}>
-          Change camera
-        </button>
-      )}
+      <button type="button" onClick={onStart}>
+        {start ? "Reset" : "Start"}
+      </button>
+      <button
+        type="button"
+        onClick={() =>
+          console.log(JSON.stringify(serializeLevel(level), null, 2))
+        }
+      >
+        Export
+      </button>
     </header>
   );
 }

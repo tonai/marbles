@@ -17,6 +17,7 @@ export interface IBlock {
   x?: number;
   y?: number;
   z?: number;
+  part?: string;
 }
 
 export type IBlocks = Record<string, IBlock>;
@@ -31,7 +32,6 @@ export interface IBlockProps
   extends Omit<RigidBodyProps, "id" | "position" | "rotation"> {
   id: string;
   joints: IJoint[];
-  models: Record<string, IModel>;
   position?: Vector3 | Vector;
   rotation?: Euler | Vector;
 }
@@ -96,8 +96,10 @@ export interface IGameContext {
 
 export interface IGameStore extends GameState {
   ballRef: MutableRefObject<RapierRigidBody | null>;
+  models: Record<string, IModel> | null;
   playerId: string;
-  setBallRef: (ballRef: MutableRefObject<RapierRigidBody | null>) => void
-  setGameState: (game: GameState,) => void
-  setPlayerId: (playerId: string) => void
+  setBallRef: (ballRef: MutableRefObject<RapierRigidBody | null>) => void;
+  setGameState: (game: Partial<GameState>) => void;
+  setModels: (models: Record<string, IModel>) => void;
+  setPlayerId: (playerId: string) => void;
 }

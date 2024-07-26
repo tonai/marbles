@@ -1,14 +1,38 @@
 import { defaultLevel } from "./constants/blocks";
-import { randomRange } from "./helpers/math";
-import { IGhost } from "./types";
+import { IRanges, getRandomPosition } from "./helpers/ball";
+import { serializeLevel } from "./helpers/level";
+import { IGhost, Vector } from "./types";
+
+const ranges: IRanges = {
+  x: [0.3, -0.3],
+  y: [1, 0.5],
+  z: [-0.2, -0.2],
+};
+
+function getGhosts(allPlayerIds: string[]): Record<string, IGhost> {
+  const positions: Vector[] = [];
+  for (let i = 0; i < allPlayerIds.length; i++) {
+    positions.push(getRandomPosition(ranges, positions));
+  }
+  return Object.fromEntries(
+    allPlayerIds.map((id, i) => [
+      id,
+      {
+        playerId: id,
+        position: positions[i],
+        movement: { x: 0, y: 0, z: 0 },
+      },
+    ]),
+  );
+}
 
 Dusk.initLogic({
   minPlayers: 1,
   maxPlayers: 6,
   reactive: false,
   setup: (allPlayerIds) => ({
-    ghosts: {},
-    level: defaultLevel,
+    ghosts: getGhosts(allPlayerIds),
+    level: serializeLevel(defaultLevel),
     playerIds: allPlayerIds,
     start: false,
   }),
@@ -18,28 +42,26 @@ Dusk.initLogic({
         game.start = false;
       } else {
         game.level = level;
-        let x = 0.2;
-        const y = 1;
-        game.ghosts = Object.fromEntries(
-          game.playerIds.map((id) => {
-            x = -x;
-            // const x = randomRange(0.3, -0.3);
-            // const y = randomRange(1, 0.5);
-            return [
-              id,
-              {
-                playerId: id,
-                position: { x, y, z: -0.2 },
-                movement: { x: 0, y: 0, z: 0 },
-              },
-            ];
-          }),
-        );
         game.start = true;
       }
     },
     updateGhost: (ghost: IGhost, { game }) => {
       game.ghosts[ghost.playerId] = ghost;
+    },
+  },
+  events: {
+    playerJoined(playerId, { game }) {
+      if (!game.start) {
+        game.playerIds.push(playerId);
+        game.ghosts[playerId] = {
+          playerId: playerId,
+          position: getRandomPosition(
+            ranges,
+            Object.values(game.ghosts).map((ghost) => ghost.position),
+          ),
+          movement: { x: 0, y: 0, z: 0 },
+        };
+      }
     },
   },
 });

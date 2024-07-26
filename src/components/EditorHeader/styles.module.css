@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+
+.menu {
+  position: absolute;
+  bottom: 0;
+  /* background: var(--bg-color); */
+  translate: 0 100%;
+  display: flex;
+}
+
+.subMenu {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.active {
+  border-color: #0000ff;
+}
+
+.placeholder {
+  background: white;
+  height: 64px;
+  width: 64px;
+  line-height: 64px;
+  font-size: 2rem;
+}

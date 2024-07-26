@@ -1,29 +1,34 @@
-import { Suspense, memo } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Suspense, memo, useEffect, useState } from "react";
+import { OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
+import { Canvas } from "@react-three/fiber";
 
 import { blocks } from "../../blocks/index.tsx";
 import Block from "../../blocks/Block/index.tsx";
 import { ILevel } from "../../types/index.ts";
-import { IModel } from "../../helpers/collection.ts";
+import { useGame } from "../../store/game.ts";
 
 import Ball from "../Ball/index.tsx";
 import FpCamera from "../FpCamera/index.tsx";
-import { OrbitControls } from "@react-three/drei";
-import { useGame } from "../../store/game.ts";
 
 interface ISceneProps {
-  camera: "free" | "fp";
-  level: ILevel;
-  models: Record<string, IModel>;
+  camera?: "free" | "fp";
+  level?: ILevel;
 }
 
 function Scene(props: ISceneProps) {
-  const { camera, level: editLevel, models } = props;
+  const { camera = "free", level: editLevel } = props;
   const playLevel = useGame((state) => state.level);
   const playerIds = useGame((state) => state.playerIds);
   const start = useGame((state) => state.start);
-  const level = start ? playLevel : editLevel;
+  const level = editLevel || playLevel;
+  const [paused, setPaused] = useState(true);
+
+  useEffect(() => {
+    if (start) {
+      setTimeout(() => setPaused(false), 100);
+    }
+  }, [start]);
 
   return (
     <Canvas>
@@ -32,7 +37,7 @@ function Scene(props: ISceneProps) {
       {(camera === "free" || !start) && <OrbitControls />}
       {camera === "fp" && start && <FpCamera />}
       <Suspense>
-        <Physics debug={false} colliders={false}>
+        <Physics debug={false} colliders={false} paused={paused}>
           {level.map(({ id, position, rotation }, i) => {
             const { joints } = blocks[id];
             const Component = blocks[id].Component || Block;
@@ -41,16 +46,14 @@ function Scene(props: ISceneProps) {
                 key={i}
                 id={id}
                 joints={joints}
-                models={models}
                 position={position}
                 rotation={rotation}
               />
             );
           })}
-          {start &&
-            playerIds.map((playerId) => (
-              <Ball key={playerId} playerId={playerId} models={models} />
-            ))}
+          {playerIds.map((playerId) => (
+            <Ball key={playerId} playerId={playerId} />
+          ))}
           {/* {start && <Ball models={models} x={0.4} y={1.3} z={-0.4} />}
           {start && <Ball models={models} x={-0.4} y={1.3} z={-0.4} />}
           {start && <Ball models={models} x={0} y={1.7} z={-0.4} />}

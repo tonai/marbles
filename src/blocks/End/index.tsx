@@ -5,10 +5,12 @@ import GLTFModel from "../../components/GLTFModel";
 import Joints from "../Joints";
 import { useBlock } from "../../hooks/useBlock";
 import { memo } from "react";
+import { useGame } from "../../store/game";
 
 function End(props: IBlockProps) {
-  const { id, joints, models, position: pos, rotation: rot, ...groupProps } = props;
+  const { id, joints, position: pos, rotation: rot, ...groupProps } = props;
   const { position, rotation } = useBlock(pos, rot);
+  const models = useGame(state => state.models);
   
   return (
     <RigidBody
@@ -20,8 +22,8 @@ function End(props: IBlockProps) {
       rotation={rotation}
       type="fixed"
     >
-      <GLTFModel model={models["end-rounded"]} />
-      <GLTFModel model={models["banner-high"]} y={0.2} z={-0.4} />
+      <GLTFModel model={models?.["end-rounded"]} />
+      <GLTFModel model={models?.["banner-high"]} y={0.2} z={-0.4} />
       <CuboidCollider
         args={[0.4, 0.4, 0.4]}
         sensor

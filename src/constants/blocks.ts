@@ -1,3 +1,4 @@
+import { Euler, Vector3 } from "three";
 import { ILevel } from "../types";
 
 export const partMenu: Record<string, string[]> = {
@@ -61,8 +62,9 @@ export const partMenu: Record<string, string[]> = {
     "split-right",
   ],
   Straights: ["straight", "straight-hole", "end"],
+  Others: ["cylinder"],
 };
-export const ballModel = 'marble-low';
+export const ballModel = "marble-low";
 
 export const defaultParts: Record<string, number> = Object.fromEntries(
   Object.values(partMenu)
@@ -70,4 +72,16 @@ export const defaultParts: Record<string, number> = Object.fromEntries(
     .map((id) => [id, Infinity]),
 );
 
-export const defaultLevel: ILevel = [{ id: "start" }];
+export const defaultLevel: ILevel = [
+  { id: "start" },
+  {
+    id: "helix-left",
+    position: new Vector3(-1.5000000513428144, -2, 0.5000000513428144),
+    rotation: new Euler(0, Math.PI / 2, 0),
+  },
+  {
+    id: "end",
+    position: new Vector3(-1.0268562711246432e-7, -2, 1.0000001026856271),
+    rotation: new Euler(-0, 0, -0),
+  },
+];

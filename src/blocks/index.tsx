@@ -2,8 +2,9 @@ import { Vector3 } from "three";
 
 import { IBlocks } from "../types";
 import { xNegVector, xVector, zNegVector, zVector } from "../constants/vector";
-import { default as End } from "./End";
-import { default as Start } from "./Start";
+import End from "./End";
+import Start from "./Start";
+import Cylinder from "./Cylinder";
 
 export const blocks: IBlocks = {
   "bend": {
@@ -73,6 +74,18 @@ export const blocks: IBlocks = {
       { dir: zNegVector, pos: new Vector3(1, 0.125, -1.5) },
       { dir: xNegVector, pos: new Vector3(-1.5, 0.125, 1) }
     ],
+  },
+  "cylinder": {
+    Component: Cylinder,
+    joints: [
+      { dir: zNegVector, pos: new Vector3(2, 0.625, -0.75) },
+      { dir: zNegVector, pos: new Vector3(0, -1, 0.5) },
+      { dir: zVector, pos: new Vector3(0, -1, -0.5) },
+      { dir: xNegVector, pos: new Vector3(0.5, -1, 0) },
+      { dir: xVector, pos: new Vector3(-0.5, -1, 0) },
+    ],
+    models: [],
+    part: 'Cyl',
   },
   "end": {
     Component: End,
