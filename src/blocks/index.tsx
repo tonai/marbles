@@ -5,6 +5,7 @@ import { xNegVector, xVector, zNegVector, zVector } from "../constants/vector";
 import End from "./End";
 import Start from "./Start";
 import Cylinder from "./Cylinder";
+import RotatingCylinder from "./RotatingCylinder";
 
 export const blocks: IBlocks = {
   "bend": {
@@ -78,7 +79,8 @@ export const blocks: IBlocks = {
   "cylinder": {
     Component: Cylinder,
     joints: [
-      { dir: zNegVector, pos: new Vector3(2, 0.625, -0.75) },
+      { dir: zNegVector, pos: new Vector3(2, 0.75, -0.75) },
+      { dir: zVector, pos: new Vector3(2, 0.75, 0.75) },
       { dir: zNegVector, pos: new Vector3(0, -1, 0.5) },
       { dir: zVector, pos: new Vector3(0, -1, -0.5) },
       { dir: xNegVector, pos: new Vector3(0.5, -1, 0) },
@@ -237,6 +239,19 @@ export const blocks: IBlocks = {
       { dir: zVector, pos: new Vector3(0, 1.625, 1) },
       { dir: zNegVector, pos: new Vector3(0, 0.125, -1) },
     ],
+  },
+  "rotating-cylinder": {
+    Component: RotatingCylinder,
+    joints: [
+      { dir: zNegVector, pos: new Vector3(2, 0.75, -0.75) },
+      { dir: zVector, pos: new Vector3(2, 0.75, 0.75) },
+      { dir: zNegVector, pos: new Vector3(0, -1, 0.5) },
+      { dir: zVector, pos: new Vector3(0, -1, -0.5) },
+      { dir: xNegVector, pos: new Vector3(0.5, -1, 0) },
+      { dir: xVector, pos: new Vector3(-0.5, -1, 0) },
+    ],
+    models: [],
+    part: 'Rot Cyl',
   },
   "s-curve-left": {
     joints: [

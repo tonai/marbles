@@ -23,6 +23,8 @@ export default function Editor() {
 
   function handleStart() {
     if (!start) {
+      setSelectedPart(undefined);
+      setJointSelection(undefined);
       setGameState({ start: true });
     } else {
       setGameState({ start: false });

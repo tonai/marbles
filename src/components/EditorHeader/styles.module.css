@@ -23,6 +23,7 @@
   margin: 0;
   padding: 0;
   background: transparent;
+  vertical-align: middle;
 }
 
 .active {
@@ -33,6 +34,8 @@
   background: white;
   height: 64px;
   width: 64px;
-  line-height: 64px;
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
 }

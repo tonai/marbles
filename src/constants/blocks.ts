@@ -62,7 +62,7 @@ export const partMenu: Record<string, string[]> = {
     "split-right",
   ],
   Straights: ["straight", "straight-hole", "end"],
-  Others: ["cylinder"],
+  Others: ["cylinder", "rotating-cylinder"],
 };
 export const ballModel = "marble-low";
 
