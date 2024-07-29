@@ -69,7 +69,9 @@ export const partMenu: Record<string, string[]> = {
     "split-right",
   ],
   Straights: ["straight", "straight-hole", "end"],
+  Wides: ["funnel", "funnel-long", "straight-wide", "straight-wide-hole", "curve-wide", "curve-wide-medium", "curve-wide-large"],
   Others: ["cylinder", "rotating-cylinder", "slant-a-pilar", "slant-b-pilar", "slant-c-pilar", "slant-d-pilar"],
+  OtherWides: ["straight-wide-pilar", "straight-wide-pilars", "curve-wide-pilar"],
 };
 export const ballModel = "marble-low";
 

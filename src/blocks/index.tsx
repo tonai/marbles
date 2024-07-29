@@ -10,6 +10,9 @@ import SlantAPilar from "./SlantAPilar";
 import SlantBPilar from "./SlantBPilar";
 import SlantCPilar from "./SlantCPilar";
 import SlantDPilar from "./SlantDPilar";
+import StraightWidePilar from './StraightWidePilar';
+import StraightWidePilars from './StraightWidePilars';
+import CurveWidePilar from './CurveWidePilar';
 
 export const blocks: IBlocks = {
   "bend": {
@@ -80,6 +83,33 @@ export const blocks: IBlocks = {
       { dir: xNegVector, pos: new Vector3(-1.5, 0.125, 1) }
     ],
   },
+  "curve-wide": {
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.85) },
+      { dir: xNegVector, pos: new Vector3(-0.85, 0.125, 0) }
+    ],
+  },
+  "curve-wide-large": {
+    joints: [
+      { dir: zNegVector, pos: new Vector3(1, 0.125, -1.85) },
+      { dir: xNegVector, pos: new Vector3(-1.85, 0.125, 1) }
+    ],
+  },
+  "curve-wide-medium": {
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0.5, 0.125, -1.35) },
+      { dir: xNegVector, pos: new Vector3(-1.35, 0.125, 0.5) }
+    ],
+  },
+  "curve-wide-pilar": {
+    Component: CurveWidePilar,
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.85) },
+      { dir: xNegVector, pos: new Vector3(-0.85, 0.125, 0) }
+    ],
+    models: ['curve-wide'],
+    part: 'Cur Wid',
+  },
   "cylinder": {
     Component: Cylinder,
     joints: [
@@ -99,6 +129,18 @@ export const blocks: IBlocks = {
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) }
     ],
     models: ["end-rounded", "banner-high"]
+  },
+  "funnel": {
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
+      { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
+    ],
+  },
+  "funnel-long": {
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -1.5) },
+      { dir: zVector, pos: new Vector3(0, 0.125, 1.5) },
+    ],
   },
   "helix-half-left": {
     joints: [
@@ -419,6 +461,36 @@ export const blocks: IBlocks = {
     ],
   },
   "straight-hole": {
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
+      { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
+    ],
+  },
+  "straight-wide": {
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
+      { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
+    ],
+  },
+  "straight-wide-pilar": {
+    Component: StraightWidePilar,
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
+      { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
+    ],
+    models: ['straight-wide'],
+    part: 'Str Wid'
+  },
+  "straight-wide-pilars": {
+    Component: StraightWidePilars,
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
+      { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
+    ],
+    models: ['straight-wide'],
+    part: 'Str Wid2'
+  },
+  "straight-wide-hole": {
     joints: [
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
       { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
