@@ -6,6 +6,10 @@ import End from "./End";
 import Start from "./Start";
 import Cylinder from "./Cylinder";
 import RotatingCylinder from "./RotatingCylinder";
+import SlantAPilar from "./SlantAPilar";
+import SlantBPilar from "./SlantBPilar";
+import SlantCPilar from "./SlantCPilar";
+import SlantDPilar from "./SlantDPilar";
 
 export const blocks: IBlocks = {
   "bend": {
@@ -283,11 +287,29 @@ export const blocks: IBlocks = {
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
     ],
   },
+  "slant-a-pilar": {
+    Component: SlantAPilar,
+    joints: [
+      { dir: zVector, pos: new Vector3(0, 0.375, 0.5) },
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
+    ],
+    models: ['slant-a'],
+    part: 'Sl A'
+  },
   "slant-b": {
     joints: [
       { dir: zVector, pos: new Vector3(0, 0.625, 0.5) },
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
     ],
+  },
+  "slant-b-pilar": {
+    Component: SlantBPilar,
+    joints: [
+      { dir: zVector, pos: new Vector3(0, 0.625, 0.5) },
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
+    ],
+    models: ['slant-b'],
+    part: 'Sl B'
   },
   "slant-c": {
     joints: [
@@ -295,11 +317,29 @@ export const blocks: IBlocks = {
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
     ],
   },
+  "slant-c-pilar": {
+    Component: SlantCPilar,
+    joints: [
+      { dir: zVector, pos: new Vector3(0, 1.125, 0.5) },
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
+    ],
+    models: ['slant-c'],
+    part: 'Sl C'
+  },
   "slant-d": {
     joints: [
       { dir: zVector, pos: new Vector3(0, 1.625, 0.5) },
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
     ],
+  },
+  "slant-d-pilar": {
+    Component: SlantDPilar,
+    joints: [
+      { dir: zVector, pos: new Vector3(0, 1.625, 0.5) },
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
+    ],
+    models: ['slant-d'],
+    part: 'Sl D'
   },
   // "slant-long-a": {
   //   joints: [

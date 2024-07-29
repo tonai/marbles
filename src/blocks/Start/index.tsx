@@ -1,11 +1,12 @@
+import { memo } from "react";
 import { RigidBody } from "@react-three/rapier";
 
 import GLTFModel from "../../components/GLTFModel";
 import { IBlockProps } from "../../types";
-import Joints from "../Joints";
 import { useBlock } from "../../hooks/useBlock";
-import { memo } from "react";
 import { useGame } from "../../store/game";
+
+import Joints from "../Joints";
 
 function Start(props: IBlockProps) {
   const { id, joints, position: pos, rotation: rot, ...groupProps } = props;
