@@ -1,4 +1,4 @@
-import { Suspense, memo, useEffect, useState } from "react";
+import { Suspense, memo, useEffect } from "react";
 import { OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Canvas } from "@react-three/fiber";
@@ -21,14 +21,15 @@ function Scene(props: ISceneProps) {
   const playLevel = useGame((state) => state.level);
   const playerIds = useGame((state) => state.playerIds);
   const start = useGame((state) => state.start);
+  const startTime = useGame((state) => state.startTime);
+  const setStartTime = useGame((state) => state.setStartTime);
   const level = editLevel || playLevel;
-  const [paused, setPaused] = useState(true);
 
   useEffect(() => {
     if (start) {
-      setTimeout(() => setPaused(false), 100);
+      setTimeout(() => setStartTime(Dusk.gameTime()), 1000);
     }
-  }, [start]);
+  }, [start, setStartTime]);
 
   return (
     <Canvas>
@@ -37,7 +38,7 @@ function Scene(props: ISceneProps) {
       {(camera === "free" || !start) && <OrbitControls />}
       {camera === "fp" && start && <FpCamera />}
       <Suspense>
-        <Physics debug={false} colliders={false} paused={paused}>
+        <Physics debug={false} colliders={false} paused={!startTime}>
           {level.map(({ id, position, rotation }, i) => {
             const { joints } = blocks[id];
             const Component = blocks[id].Component || Block;
@@ -54,11 +55,6 @@ function Scene(props: ISceneProps) {
           {playerIds.map((playerId) => (
             <Ball key={playerId} playerId={playerId} />
           ))}
-          {/* {start && <Ball models={models} x={0.4} y={1.3} z={-0.4} />}
-          {start && <Ball models={models} x={-0.4} y={1.3} z={-0.4} />}
-          {start && <Ball models={models} x={0} y={1.7} z={-0.4} />}
-          {start && <Ball models={models} x={0.4} y={1.7} z={-0.2} />}
-          {start && <Ball models={models} x={-0.4} y={1.7} z={-0.2} />} */}
         </Physics>
       </Suspense>
     </Canvas>

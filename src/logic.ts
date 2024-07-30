@@ -1,7 +1,7 @@
 import { defaultLevel } from "./constants/blocks";
 import { IRanges, getRandomPosition } from "./helpers/ball";
 import { serializeLevel } from "./helpers/level";
-import { IGhost, Vector } from "./types";
+import { IGhost, Mode, Vector } from "./types";
 
 const ranges: IRanges = {
   x: [0.3, -0.3],
@@ -33,6 +33,7 @@ Dusk.initLogic({
   setup: (allPlayerIds) => ({
     ghosts: getGhosts(allPlayerIds),
     level: serializeLevel(defaultLevel),
+    mode: Mode.WAIT,
     playerIds: allPlayerIds,
     start: false,
   }),
@@ -41,13 +42,18 @@ Dusk.initLogic({
       if (game.start) {
         game.start = false;
       } else {
-        game.level = level;
+        if (level) {
+          game.level = level;
+        }
         game.start = true;
       }
     },
-    updateGhost: (ghost: IGhost, { game }) => {
-      game.ghosts[ghost.playerId] = ghost;
+    setMode: (mode, { game }) => {
+      game.mode = mode;
     },
+    // updateGhost: (ghost: IGhost, { game }) => {
+    //   game.ghosts[ghost.playerId] = ghost;
+    // },
   },
   events: {
     playerJoined(playerId, { game }) {

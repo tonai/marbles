@@ -70,8 +70,9 @@ export const partMenu: Record<string, string[]> = {
   ],
   Straights: ["straight", "straight-hole", "end"],
   Wides: ["funnel", "funnel-long", "straight-wide", "straight-wide-hole", "curve-wide", "curve-wide-medium", "curve-wide-large"],
-  Others: ["cylinder", "rotating-cylinder", "slant-a-pilar", "slant-b-pilar", "slant-c-pilar", "slant-d-pilar"],
+  Dynamics: ["rotating-cylinder", "escalator"],
   OtherWides: ["straight-wide-pilar", "straight-wide-pilars", "curve-wide-pilar"],
+  Others: ["cylinder", "slant-a-pilar", "slant-b-pilar", "slant-c-pilar", "slant-d-pilar"],
 };
 export const ballModel = "marble-low";
 
@@ -97,58 +98,58 @@ export const defaultParts: Record<string, number> = Object.fromEntries(
 
 export const defaultLevel: ILevel = deserializeLevel([
   {
-    id: "start",
+    "id": "start"
   },
   {
-    id: "rotating-cylinder",
-    position: {
-      x: -2,
-      y: -0.625,
-      z: 1.25,
+    "id": "ramp-long-a",
+    "position": {
+      "x": 0,
+      "y": -0.25,
+      "z": 1.5
     },
-    rotation: {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
+    "rotation": {
+      "x": -3.1415927410125732,
+      "y": 0,
+      "z": -3.1415927410125732
+    }
   },
   {
-    id: "slant-a",
-    position: {
-      x: -2,
-      y: -2,
-      z: 1.25,
+    "id": "escalator",
+    "position": {
+      "x": -2.1855694143369007e-8,
+      "y": -0.2499999562886117,
+      "z": 2.9999999781443076
     },
-    rotation: {
-      x: -3.1415927410125732,
-      y: 0,
-      z: -3.1415927410125732,
-    },
+    "rotation": {
+      "x": 8.742277657347586e-8,
+      "y": 0,
+      "z": -8.742277657347586e-8
+    }
   },
   {
-    id: "ramp-start-a",
-    position: {
-      x: -1.999999989072153,
-      y: -2.1249999125772225,
-      z: 2.2500000109278506,
+    "id": "ramp-long-a",
+    "position": {
+      "x": 6.556708243010703e-8,
+      "y": 8.742277457507441e-8,
+      "z": 4.500000065567086
     },
-    rotation: {
-      x: 3.141592502593994,
-      y: 0,
-      z: 3.141592502593994,
-    },
+    "rotation": {
+      "x": 3.141592502593994,
+      "y": 0,
+      "z": 3.141592502593994
+    }
   },
   {
-    id: "end",
-    position: {
-      x: -2.0000000268211036,
-      y: -2.1249999125772225,
-      z: 3.2499999731789,
+    "id": "end",
+    "position": {
+      "x": 2.781813179808515e-8,
+      "y": 1.6292067583911773e-7,
+      "z": 6.000000027818142
     },
-    rotation: {
-      x: 1.5099580252808664e-7,
-      y: 0,
-      z: -1.5099580252808664e-7,
-    },
-  },
+    "rotation": {
+      "x": 1.5099580252808664e-7,
+      "y": 0,
+      "z": -1.5099580252808664e-7
+    }
+  }
 ]);

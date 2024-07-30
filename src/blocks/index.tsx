@@ -13,6 +13,7 @@ import SlantDPilar from "./SlantDPilar";
 import StraightWidePilar from './StraightWidePilar';
 import StraightWidePilars from './StraightWidePilars';
 import CurveWidePilar from './CurveWidePilar';
+import Escalator from './Escalator';
 
 export const blocks: IBlocks = {
   "bend": {
@@ -122,6 +123,15 @@ export const blocks: IBlocks = {
     ],
     models: [],
     part: 'Cyl',
+  },
+  "escalator": {
+    Component: Escalator,
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
+      { dir: zVector, pos: new Vector3(0, 0.625, 0.5) },
+    ],
+    models: [],
+    part: 'Esc',
   },
   "end": {
     Component: End,

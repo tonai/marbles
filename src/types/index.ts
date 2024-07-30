@@ -68,16 +68,24 @@ export interface IGhost {
 
 export type IGhosts = Record<string, IGhost>;
 
+export enum Mode {
+  WAIT,
+  EDITOR,
+  PLAY,
+}
+
 export interface GameState {
   ghosts: IGhosts;
   level: ISerializedLevel;
+  mode: Mode;
   playerIds: PlayerId[];
   start: boolean;
 }
 
 export type GameActions = {
+  setMode: (mode: Mode) => void;
   start: (level: ISerializedLevel) => void;
-  updateGhost: (args: IGhost) => void;
+  // updateGhost: (args: IGhost) => void;
 };
 
 declare global {
@@ -102,4 +110,6 @@ export interface IGameStore extends GameState {
   setGameState: (game: Partial<GameState>) => void;
   setModels: (models: Record<string, IModel>) => void;
   setPlayerId: (playerId: string) => void;
+  setStartTime: (startTime: number) => void;
+  startTime: number;
 }
