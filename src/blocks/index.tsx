@@ -14,6 +14,7 @@ import StraightWidePilar from './StraightWidePilar';
 import StraightWidePilars from './StraightWidePilars';
 import CurveWidePilar from './CurveWidePilar';
 import Escalator from './Escalator';
+import Tube from './Tube';
 
 export const blocks: IBlocks = {
   "bend": {
@@ -505,6 +506,15 @@ export const blocks: IBlocks = {
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
       { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
     ],
+  },
+  "tube": {
+    Component: Tube,
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 0.125, 0) },
+      { dir: zVector, pos: new Vector3(5.1, -3.25, -0.5) },
+    ],
+    models: [],
+    part: 'Tub'
   },
   "wave-a": {
     joints: [

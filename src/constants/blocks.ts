@@ -72,7 +72,7 @@ export const partMenu: Record<string, string[]> = {
   Wides: ["funnel", "funnel-long", "straight-wide", "straight-wide-hole", "curve-wide", "curve-wide-medium", "curve-wide-large"],
   Dynamics: ["rotating-cylinder", "escalator"],
   OtherWides: ["straight-wide-pilar", "straight-wide-pilars", "curve-wide-pilar"],
-  Others: ["cylinder", "slant-a-pilar", "slant-b-pilar", "slant-c-pilar", "slant-d-pilar"],
+  Others: ["cylinder", "slant-a-pilar", "slant-b-pilar", "slant-c-pilar", "slant-d-pilar", "tube"],
 };
 export const ballModel = "marble-low";
 
@@ -101,55 +101,29 @@ export const defaultLevel: ILevel = deserializeLevel([
     "id": "start"
   },
   {
-    "id": "ramp-long-a",
+    "id": "tube",
     "position": {
       "x": 0,
-      "y": -0.25,
-      "z": 1.5
+      "y": 0,
+      "z": 0.5
     },
     "rotation": {
-      "x": -3.1415927410125732,
+      "x": 0,
       "y": 0,
-      "z": -3.1415927410125732
-    }
-  },
-  {
-    "id": "escalator",
-    "position": {
-      "x": -2.1855694143369007e-8,
-      "y": -0.2499999562886117,
-      "z": 2.9999999781443076
-    },
-    "rotation": {
-      "x": 8.742277657347586e-8,
-      "y": 0,
-      "z": -8.742277657347586e-8
-    }
-  },
-  {
-    "id": "ramp-long-a",
-    "position": {
-      "x": 6.556708243010703e-8,
-      "y": 8.742277457507441e-8,
-      "z": 4.500000065567086
-    },
-    "rotation": {
-      "x": 3.141592502593994,
-      "y": 0,
-      "z": 3.141592502593994
+      "z": 0
     }
   },
   {
     "id": "end",
     "position": {
-      "x": 2.781813179808515e-8,
-      "y": 1.6292067583911773e-7,
-      "z": 6.000000027818142
+      "x": 5.1,
+      "y": -3.375,
+      "z": 0.5
     },
     "rotation": {
-      "x": 1.5099580252808664e-7,
+      "x": 0,
       "y": 0,
-      "z": -1.5099580252808664e-7
+      "z": 0
     }
   }
 ]);
