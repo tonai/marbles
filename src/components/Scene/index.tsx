@@ -10,6 +10,8 @@ import { useGame } from "../../store/game.ts";
 
 import Ball from "../Ball/index.tsx";
 import FpCamera from "../FpCamera/index.tsx";
+import Background from "../Background/index.ts";
+
 
 interface ISceneProps {
   camera?: "free" | "fp";
@@ -33,6 +35,7 @@ function Scene(props: ISceneProps) {
 
   return (
     <Canvas>
+      <Background/>
       <ambientLight intensity={Math.PI / 2} />
       <directionalLight args={[0xffffff, Math.PI]} position={[10, 10, 5]} />
       {(camera === "free" || !start) && <OrbitControls />}
