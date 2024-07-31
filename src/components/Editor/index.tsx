@@ -13,7 +13,7 @@ import styles from "./styles.module.css";
 import { useGame } from "../../store/game";
 
 export default function Editor() {
-  const [level, setLevel] = useState([{ id: "start" }]);
+  const [level, setLevel] = useState([{ id: "pachinko" }]);
   const [parts, setParts] = useState(defaultParts);
   const setGameState = useGame((state) => state.setGameState);
   const start = useGame((state) => state.start);

@@ -26,7 +26,7 @@ function FreeBall(props: IFreeBallProps) {
       colliders="ball"
       position={startPosition.current}
       restitution={0.5}
-      scale={0.3}
+      scale={0.5}
     >
       <GLTFModel {...modelProps} model={model} />
     </RigidBody>

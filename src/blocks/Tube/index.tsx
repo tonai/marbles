@@ -40,7 +40,7 @@ function Tube(props: IBlockProps) {
     >
       <mesh position={[0, 0.3, -0.2]} rotation={[Math.PI / 2, 2 * Math.PI / 6, 0]}>
         <tubeGeometry args={[path, 64, 0.5, 12, false]} />
-        <meshPhysicalMaterial side={DoubleSide} metalness={0} roughness={0.2} transmission={1} thickness={0.3} ior={1} reflectivity={0.5} opacity={0.5} transparent depthWrite={false} />
+        <meshPhysicalMaterial side={DoubleSide} metalness={0} roughness={0.2} transmission={0} thickness={0.3} ior={1} reflectivity={0.5} opacity={0.5} transparent depthWrite={false} />
       </mesh>
       <Joints joints={joints} position={position} rotation={rotation} />
     </RigidBody>

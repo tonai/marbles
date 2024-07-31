@@ -15,6 +15,8 @@ import StraightWidePilars from './StraightWidePilars';
 import CurveWidePilar from './CurveWidePilar';
 import Escalator from './Escalator';
 import Tube from './Tube';
+import Pachinko from './Pachinko';
+import PachinkoEnd from './PachinkoEnd';
 
 export const blocks: IBlocks = {
   "bend": {
@@ -141,6 +143,11 @@ export const blocks: IBlocks = {
     ],
     models: ["end-rounded", "banner-high"]
   },
+  "end-rounded": {
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) }
+    ],
+  },
   "funnel": {
     joints: [
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
@@ -224,6 +231,26 @@ export const blocks: IBlocks = {
       { dir: zNegVector, pos: new Vector3(-0.5, 0.625, -1) },
       { dir: xVector, pos: new Vector3(1, 0.125, 0.5) }
     ],
+  },
+  "pachinko": {
+    Component: Pachinko,
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 1.125, -0.5) },
+      { dir: zVector, pos: new Vector3(0, -0.875, -0.5) },
+      { dir: zNegVector, pos: new Vector3(0, -0.875, 0.5) },
+    ],
+    models: [],
+    part: 'Pck'
+  },
+  "pachinko-end": {
+    Component: PachinkoEnd,
+    joints: [
+      { dir: zNegVector, pos: new Vector3(0, 1.125, -0.5) },
+      { dir: zVector, pos: new Vector3(0, -1.375, -0.5) },
+      { dir: zNegVector, pos: new Vector3(0, -1.375, 0.5) },
+    ],
+    models: [],
+    part: 'Pck End'
   },
   "ramp-end-a": {
     joints: [
