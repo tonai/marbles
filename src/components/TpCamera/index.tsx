@@ -29,7 +29,7 @@ export default function TpCamera() {
       cameraRef.current.position.lerp(wantedPosition, 0.1);
       cameraRef.current.lookAt(newPosition);
     }
-  });
+  }, 2);
 
   useEffect(() => {
     const newCam = cameraRef.current;

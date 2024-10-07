@@ -10,7 +10,7 @@ import Parallelepiped from "../../shapes/Parallelepiped";
 import { useFrame } from "@react-three/fiber";
 
 const delta = 0.25;
-const speed = 0.15;
+const speed = 0.1;
 
 function Escalator(props: IBlockProps) {
   const { id, joints, position: pos, rotation: rot, ...groupProps } = props;
@@ -58,7 +58,7 @@ function Escalator(props: IBlockProps) {
       bodyRef7.current.setLinvel({ x: 0, y: -dir.current, z: 0 }, true);
       bodyRef8.current.setLinvel({ x: 0, y: dir.current, z: 0 }, true);
     }
-  });
+  }, 2);
 
   /*
   const startTime = useGame((state) => state.startTime);

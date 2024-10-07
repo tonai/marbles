@@ -1,11 +1,12 @@
+import { useEffect } from "react";
+import { Color, Mesh, MeshStandardMaterial } from "three";
+
 import { ballModel } from "../../constants/blocks";
 import { IModelProps } from "../GLTFModel";
 // import GhostBall from "./GhostBall";
 // import PlayerBall from "./PlayerBall";
 import { useGame } from "../../store/game";
 import FreeBall from "./FreeBall";
-import { useEffect } from "react";
-import { Color, Mesh, MeshStandardMaterial } from "three";
 
 interface IBallProps extends IModelProps {
   playerId: string;
@@ -24,7 +25,7 @@ export default function Ball(props: IBallProps) {
     material.opacity = 0.8;
   }, [model]);
 
-  return <FreeBall {...modelProps} ghost={ghost} model={model} />;
+  return <FreeBall {...modelProps} ghost={ghost} model={model} playerId={playerId} />;
 
   // if (playerId !== yourPlayerId) {
   //   return <GhostBall {...modelProps} model={model} playerId={playerId} />;

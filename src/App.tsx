@@ -1,11 +1,10 @@
 import { useEffect, useRef } from "react";
+import { RapierRigidBody } from "@react-three/rapier";
 
 import { loadModels } from "./helpers/collection.ts";
-
 import { blocks } from "./blocks";
 import { ballModel } from "./constants/blocks.ts";
 import { useGame } from "./store/game.ts";
-import { RapierRigidBody } from "@react-three/rapier";
 import StartScreen from "./components/StartScreen/index.tsx";
 
 const modelList = new Set(
@@ -27,7 +26,7 @@ function App() {
   useEffect(() => {
     loadModels(Array.from(modelList), "/models/").then(setModels);
     setBallRef(ballRef);
-  }, [setBallRef]);
+  }, [setBallRef, setModels]);
 
   useEffect(() => {
     if (models) {

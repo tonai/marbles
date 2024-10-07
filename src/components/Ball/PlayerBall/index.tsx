@@ -51,7 +51,7 @@ function PlayerBall(props: IPlayerBallProps) {
         counter.current = 0;
       }
     }
-  });
+  }, 2);
 
   return (
     <RigidBody

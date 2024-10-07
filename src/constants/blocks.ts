@@ -5,13 +5,15 @@ export const cylinderLowRadius = 0.25;
 export const cylinderHighRadius = 2.5;
 export const cylinderHeight = 1;
 
-export const pilarRadius = 0.125;
+export const pilarRadius = 0.05;
 export const pilarHeight = 0.5;
 
 export const pachinkoHeight = 2;
 export const pachinkoWidth = 3;
 export const pachinkoDepth = 1;
 export const twoThird = 2 / 3;
+
+export const ballRadius = 0.125;
 
 export const partMenu: Record<string, string[]> = {
   Bends: ["bend", "bend-medium", "bend-large"],
@@ -126,11 +128,11 @@ export const defaultLevel: ILevel = deserializeLevel([
     }
   },
   {
-    "id": "ramp-long-b",
+    "id": "ramp-end-a",
     "position": {
       "x": 0,
-      "y": -4,
-      "z": 0.5
+      "y": -3.625,
+      "z": 0
     },
     "rotation": {
       "x": -3.1415927410125732,
@@ -139,11 +141,24 @@ export const defaultLevel: ILevel = deserializeLevel([
     }
   },
   {
+    "id": "slant-a",
+    "position": {
+      "x": 2.185569414336901e-8,
+      "y": -3.8749999125772217,
+      "z": 1.000000021855698
+    },
+    "rotation": {
+      "x": 3.141592502593994,
+      "y": 0,
+      "z": 3.141592502593994
+    }
+  },
+  {
     "id": "end-rounded",
     "position": {
-      "x": -4.3711388286738015e-8,
-      "y": -3.500000131134169,
-      "z": -1.000000043711394
+      "x": -1.0927847071684505e-8,
+      "y": -3.5000000874227775,
+      "z": -1.0000000109278508
     },
     "rotation": {
       "x": 3.141592502593994,
@@ -152,37 +167,11 @@ export const defaultLevel: ILevel = deserializeLevel([
     }
   },
   {
-    "id": "ramp-long-d",
+    "id": "escalator",
     "position": {
-      "x": 1.3113416486021402e-7,
-      "y": -5.499999825154435,
-      "z": 2.5000001311341724
-    },
-    "rotation": {
-      "x": 3.141592502593994,
-      "y": 0,
-      "z": 3.141592502593994
-    }
-  },
-  {
-    "id": "bump-b",
-    "position": {
-      "x": 1.3113416486021402e-7,
-      "y": -5.499999372167028,
-      "z": 5.5000001311342075
-    },
-    "rotation": {
-      "x": 3.141592502593994,
-      "y": 0,
-      "z": 3.141592502593994
-    }
-  },
-  {
-    "id": "split-double",
-    "position": {
-      "x": 9.338521422819215e-8,
-      "y": -5.499999221171225,
-      "z": 8.50000009338527
+      "x": -1.5893256488652865e-8,
+      "y": -3.8749999125772217,
+      "z": 1.9999999841067473
     },
     "rotation": {
       "x": 1.5099580252808664e-7,
@@ -191,53 +180,40 @@ export const defaultLevel: ILevel = deserializeLevel([
     }
   },
   {
-    "id": "helix-left",
+    "id": "escalator",
     "position": {
-      "x": -2.5000002599492044,
-      "y": -7.499998994677467,
-      "z": 9.500000484468679
-    },
-    "rotation": {
-      "x": -1.5099580252808664e-7,
-      "y": 1.5707963705062866,
-      "z": 0
-    }
-  },
-  {
-    "id": "helix-right",
-    "position": {
-      "x": 2.5000004844685835,
-      "y": -7.499999296669073,
-      "z": 9.49999984273645
+      "x": 5.960464477539089e-8,
+      "y": -3.3750000635730357,
+      "z": 3.0000000596046372
     },
     "rotation": {
       "x": 1.5099580252808664e-7,
-      "y": -1.5707963705062866,
-      "z": 0
+      "y": 0,
+      "z": -1.5099580252808664e-7
     }
   },
   {
-    "id": "split-double",
+    "id": "escalator",
     "position": {
-      "x": -2.9241753307651663e-7,
-      "y": -7.499998843681665,
-      "z": 10.500000516937018
+      "x": 1.3510254603943463e-7,
+      "y": -2.87500021456885,
+      "z": 4.000000135102527
     },
     "rotation": {
-      "x": -3.1415927410125732,
+      "x": 1.5099580252808664e-7,
       "y": 0,
-      "z": 3.141592502593994
+      "z": -1.5099580252808664e-7
     }
   },
   {
     "id": "end",
     "position": {
-      "x": -3.301664837085384e-7,
-      "y": -7.499998799970276,
-      "z": 12.000000495081332
+      "x": 2.1060044730347838e-7,
+      "y": -2.375000365564664,
+      "z": 5.000000210600418
     },
     "rotation": {
-      "x": 8.742277657347586e-8,
+      "x": 1.5099580252808664e-7,
       "y": 0,
       "z": -1.5099580252808664e-7
     }

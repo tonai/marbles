@@ -28,7 +28,7 @@ function GhostBall(props: IGhostBallProps) {
         });
       }
     }
-  });
+  }, 2);
 
   useEffect(() => {
     const ball = ballRef.current;

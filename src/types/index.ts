@@ -2,6 +2,7 @@ import type { PlayerId, DuskClient } from "dusk-games-sdk/multiplayer";
 import { ComponentType, MutableRefObject } from "react";
 import { RapierRigidBody, RigidBodyProps } from "@react-three/rapier";
 import { Euler, Vector3 } from "three";
+import { OrbitControls } from 'three-stdlib'
 
 import { IModel } from "../helpers/collection";
 
@@ -84,6 +85,7 @@ export interface GameState {
 
 export type GameActions = {
   setMode: (mode: Mode) => void;
+  setPosition: (position: Vector) => void;
   start: (level: ISerializedLevel) => void;
   // updateGhost: (args: IGhost) => void;
 };
@@ -105,10 +107,12 @@ export interface IGameContext {
 export interface IGameStore extends GameState {
   ballRef: MutableRefObject<RapierRigidBody | null>;
   models: Record<string, IModel> | null;
+  orbitControls: MutableRefObject<OrbitControls | null>;
   playerId: string;
   setBallRef: (ballRef: MutableRefObject<RapierRigidBody | null>) => void;
   setGameState: (game: Partial<GameState>) => void;
   setModels: (models: Record<string, IModel>) => void;
+  setOrbitControls: (orbitControls: MutableRefObject<OrbitControls | null>) => void;
   setPlayerId: (playerId: string) => void;
   setStartTime: (startTime: number) => void;
   startTime: number;

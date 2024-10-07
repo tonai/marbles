@@ -18,19 +18,19 @@ import Joints from "../Joints";
 const plane = new Float32Array([
   -pachinkoWidth / 2, pachinkoHeight / 2, -pachinkoDepth / 2,
   -pachinkoWidth / 2, pachinkoHeight / 2, pachinkoDepth / 2,
-  -0.5, -pachinkoHeight / 2, pachinkoDepth / 2,
-  -0.5, -pachinkoHeight / 2, pachinkoDepth / 2,
-  -0.5, -pachinkoHeight / 2, -pachinkoDepth / 2,
+  -0.35, -pachinkoHeight / 2, pachinkoDepth / 2,
+  -0.35, -pachinkoHeight / 2, pachinkoDepth / 2,
+  -0.35, -pachinkoHeight / 2, -pachinkoDepth / 2,
   -pachinkoWidth / 2, pachinkoHeight / 2, -pachinkoDepth / 2,
 ]);
 
 const quadrilateral = new Float32Array([
   -pachinkoWidth / 2, pachinkoHeight / 2, 0,
-  -0.5, -pachinkoHeight / 2, 0,
+  -0.35, -pachinkoHeight / 2, 0,
   pachinkoWidth / 2, pachinkoHeight / 2, 0,
-  -0.5, -pachinkoHeight / 2, 0,
+  -0.35, -pachinkoHeight / 2, 0,
   pachinkoWidth / 2, pachinkoHeight / 2, 0,
-  0.5, -pachinkoHeight / 2, 0,
+  0.35, -pachinkoHeight / 2, 0,
 ]);
 
 function PachinkoEnd(props: IBlockProps) {

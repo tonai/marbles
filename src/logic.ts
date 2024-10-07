@@ -1,12 +1,12 @@
-import { defaultLevel } from "./constants/blocks";
+import { ballRadius, defaultLevel } from "./constants/blocks";
 import { IRanges, getRandomPosition } from "./helpers/ball";
 import { serializeLevel } from "./helpers/level";
 import { IGhost, Mode, Vector } from "./types";
 
 const ranges: IRanges = {
-  x: [0.3, -0.3],
-  y: [1, 0.5],
-  z: [-0.2, -0.2],
+  x: [1.5 - ballRadius, -1.5 + ballRadius],
+  y: [1 + ballRadius, 2 - ballRadius],
+  z: [0.5 - ballRadius, -0.5 + ballRadius],
 };
 
 function getGhosts(allPlayerIds: string[]): Record<string, IGhost> {
@@ -47,6 +47,9 @@ Dusk.initLogic({
         }
         game.start = true;
       }
+    },
+    setPosition: (position, { game, playerId }) => {
+      game.ghosts[playerId].position = position;
     },
     setMode: (mode, { game }) => {
       game.mode = mode;

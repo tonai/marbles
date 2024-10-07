@@ -37,7 +37,7 @@ function RotatingCylinder(props: IBlockProps) {
     if (ref.current) {
       ref.current.setAngvel({ x: 0, y: 1, z: 0 }, true);
     }
-  });
+  }, 2);
 
   return (
     <RigidBody
