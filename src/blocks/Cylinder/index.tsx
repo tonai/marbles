@@ -1,20 +1,20 @@
-import { memo } from "react";
-import { RigidBody } from "@react-three/rapier";
-import { BackSide, FrontSide } from "three";
+import { memo } from "react"
+import { RigidBody } from "@react-three/rapier"
+import { BackSide, FrontSide } from "three"
 
-import { IBlockProps } from "../../types";
-import { useBlock } from "../../hooks/useBlock";
+import { IBlockProps } from "../../types"
+import { useBlock } from "../../hooks/useBlock"
 
-import Joints from "../Joints";
+import Joints from "../Joints"
 import {
   cylinderHeight,
   cylinderHighRadius,
   cylinderLowRadius,
-} from "../../constants/blocks";
+} from "../../constants/blocks"
 
 function Cylinder(props: IBlockProps) {
-  const { id, joints, position: pos, rotation: rot, ...groupProps } = props;
-  const { position, rotation } = useBlock(pos, rot);
+  const { id, joints, position: pos, rotation: rot, ...groupProps } = props
+  const { position, rotation } = useBlock(pos, rot)
 
   return (
     <RigidBody
@@ -62,8 +62,8 @@ function Cylinder(props: IBlockProps) {
       </mesh>
       <Joints joints={joints} position={position} rotation={rotation} />
     </RigidBody>
-  );
+  )
 }
 
-const MemoCylinder = memo(Cylinder);
-export default MemoCylinder;
+const MemoCylinder = memo(Cylinder)
+export default MemoCylinder

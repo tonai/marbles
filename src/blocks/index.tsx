@@ -1,40 +1,40 @@
-import { Vector3 } from "three";
+import { Vector3 } from "three"
 
-import { IBlocks } from "../types";
-import { xNegVector, xVector, zNegVector, zVector } from "../constants/vector";
-import End from "./End";
-import Start from "./Start";
-import Cylinder from "./Cylinder";
-import RotatingCylinder from "./RotatingCylinder";
-import SlantAPilar from "./SlantAPilar";
-import SlantBPilar from "./SlantBPilar";
-import SlantCPilar from "./SlantCPilar";
-import SlantDPilar from "./SlantDPilar";
-import StraightWidePilar from './StraightWidePilar';
-import StraightWidePilars from './StraightWidePilars';
-import CurveWidePilar from './CurveWidePilar';
-import Escalator from './Escalator';
-import Tube from './Tube';
-import Pachinko from './Pachinko';
-import PachinkoEnd from './PachinkoEnd';
+import { IBlocks } from "../types"
+import { xNegVector, xVector, zNegVector, zVector } from "../constants/vector"
+import End from "./End"
+import Start from "./Start"
+import Cylinder from "./Cylinder"
+import RotatingCylinder from "./RotatingCylinder"
+import SlantAPilar from "./SlantAPilar"
+import SlantBPilar from "./SlantBPilar"
+import SlantCPilar from "./SlantCPilar"
+import SlantDPilar from "./SlantDPilar"
+import StraightWidePilar from "./StraightWidePilar"
+import StraightWidePilars from "./StraightWidePilars"
+import CurveWidePilar from "./CurveWidePilar"
+import Escalator from "./Escalator"
+import Tube from "./Tube"
+import Pachinko from "./Pachinko"
+import PachinkoEnd from "./PachinkoEnd"
 
 export const blocks: IBlocks = {
-  "bend": {
+  bend: {
     joints: [
       { dir: xNegVector, pos: new Vector3(-0.5, 0.125, -0.5) },
-      { dir: xNegVector, pos: new Vector3(-0.5, 0.125, 0.5) }
+      { dir: xNegVector, pos: new Vector3(-0.5, 0.125, 0.5) },
     ],
   },
   "bend-large": {
     joints: [
       { dir: xNegVector, pos: new Vector3(-1.5, 0.125, -2.5) },
-      { dir: xNegVector, pos: new Vector3(-1.5, 0.125, 2.5) }
+      { dir: xNegVector, pos: new Vector3(-1.5, 0.125, 2.5) },
     ],
   },
   "bend-medium": {
     joints: [
       { dir: xNegVector, pos: new Vector3(-1, 0.125, -1.5) },
-      { dir: xNegVector, pos: new Vector3(-1, 0.125, 1.5) }
+      { dir: xNegVector, pos: new Vector3(-1, 0.125, 1.5) },
     ],
   },
   "bump-a": {
@@ -61,13 +61,13 @@ export const blocks: IBlocks = {
       { dir: zNegVector, pos: new Vector3(0, 0.125, -2) },
     ],
   },
-  "corner":  {
+  corner: {
     joints: [
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
-      { dir: xNegVector, pos: new Vector3(-0.5, 0.125, 0) }
+      { dir: xNegVector, pos: new Vector3(-0.5, 0.125, 0) },
     ],
   },
-  "cross":  {
+  cross: {
     joints: [
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
       { dir: xNegVector, pos: new Vector3(-0.5, 0.125, 0) },
@@ -75,46 +75,46 @@ export const blocks: IBlocks = {
       { dir: xVector, pos: new Vector3(0.5, 0.125, 0) },
     ],
   },
-  "curve": {
+  curve: {
     joints: [
       { dir: zNegVector, pos: new Vector3(0.5, 0.125, -1) },
-      { dir: xNegVector, pos: new Vector3(-1, 0.125, 0.5) }
+      { dir: xNegVector, pos: new Vector3(-1, 0.125, 0.5) },
     ],
   },
   "curve-large": {
     joints: [
       { dir: zNegVector, pos: new Vector3(1, 0.125, -1.5) },
-      { dir: xNegVector, pos: new Vector3(-1.5, 0.125, 1) }
+      { dir: xNegVector, pos: new Vector3(-1.5, 0.125, 1) },
     ],
   },
   "curve-wide": {
     joints: [
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.85) },
-      { dir: xNegVector, pos: new Vector3(-0.85, 0.125, 0) }
+      { dir: xNegVector, pos: new Vector3(-0.85, 0.125, 0) },
     ],
   },
   "curve-wide-large": {
     joints: [
       { dir: zNegVector, pos: new Vector3(1, 0.125, -1.85) },
-      { dir: xNegVector, pos: new Vector3(-1.85, 0.125, 1) }
+      { dir: xNegVector, pos: new Vector3(-1.85, 0.125, 1) },
     ],
   },
   "curve-wide-medium": {
     joints: [
       { dir: zNegVector, pos: new Vector3(0.5, 0.125, -1.35) },
-      { dir: xNegVector, pos: new Vector3(-1.35, 0.125, 0.5) }
+      { dir: xNegVector, pos: new Vector3(-1.35, 0.125, 0.5) },
     ],
   },
   "curve-wide-pilar": {
     Component: CurveWidePilar,
     joints: [
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.85) },
-      { dir: xNegVector, pos: new Vector3(-0.85, 0.125, 0) }
+      { dir: xNegVector, pos: new Vector3(-0.85, 0.125, 0) },
     ],
-    models: ['curve-wide'],
-    part: 'Cur Wid',
+    models: ["curve-wide"],
+    part: "Cur Wid",
   },
-  "cylinder": {
+  cylinder: {
     Component: Cylinder,
     joints: [
       { dir: zNegVector, pos: new Vector3(2, 0.75, -0.75) },
@@ -125,30 +125,26 @@ export const blocks: IBlocks = {
       { dir: xVector, pos: new Vector3(-0.5, -1, 0) },
     ],
     models: [],
-    part: 'Cyl',
+    part: "Cyl",
   },
-  "escalator": {
+  escalator: {
     Component: Escalator,
     joints: [
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
       { dir: zVector, pos: new Vector3(0, 0.625, 0.5) },
     ],
     models: [],
-    part: 'Esc',
+    part: "Esc",
   },
-  "end": {
+  end: {
     Component: End,
-    joints: [
-      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) }
-    ],
-    models: ["end-rounded", "banner-high"]
+    joints: [{ dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) }],
+    models: ["end-rounded", "banner-high"],
   },
   "end-rounded": {
-    joints: [
-      { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) }
-    ],
+    joints: [{ dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) }],
   },
-  "funnel": {
+  funnel: {
     joints: [
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
       { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
@@ -163,76 +159,76 @@ export const blocks: IBlocks = {
   "helix-half-left": {
     joints: [
       { dir: xNegVector, pos: new Vector3(-1, 1.125, -1.5) },
-      { dir: xNegVector, pos: new Vector3(-1, 0.125, 1.5) }
+      { dir: xNegVector, pos: new Vector3(-1, 0.125, 1.5) },
     ],
   },
   "helix-half-right": {
     joints: [
       { dir: xVector, pos: new Vector3(1, 1.125, -1.5) },
-      { dir: xVector, pos: new Vector3(1, 0.125, 1.5) }
+      { dir: xVector, pos: new Vector3(1, 0.125, 1.5) },
     ],
   },
   "helix-large-half-left": {
     joints: [
       { dir: xNegVector, pos: new Vector3(-1.5, 1.125, -2.5) },
-      { dir: xNegVector, pos: new Vector3(-1.5, 0.125, 2.5) }
+      { dir: xNegVector, pos: new Vector3(-1.5, 0.125, 2.5) },
     ],
   },
   "helix-large-half-right": {
     joints: [
       { dir: xVector, pos: new Vector3(1.5, 1.125, -2.5) },
-      { dir: xVector, pos: new Vector3(1.5, 0.125, 2.5) }
+      { dir: xVector, pos: new Vector3(1.5, 0.125, 2.5) },
     ],
   },
   "helix-large-left": {
     joints: [
       { dir: xVector, pos: new Vector3(0, 2.125, 2.5) },
-      { dir: xNegVector, pos: new Vector3(0, 0.125, 2.5) }
+      { dir: xNegVector, pos: new Vector3(0, 0.125, 2.5) },
     ],
   },
   "helix-large-right": {
     joints: [
       { dir: xNegVector, pos: new Vector3(0, 2.125, 2.5) },
-      { dir: xVector, pos: new Vector3(0, 0.125, 2.5) }
+      { dir: xVector, pos: new Vector3(0, 0.125, 2.5) },
     ],
   },
   "helix-large-quarter-left": {
     joints: [
       { dir: zNegVector, pos: new Vector3(1, 0.625, -1.5) },
-      { dir: xNegVector, pos: new Vector3(-1.5, 0.125, 1) }
+      { dir: xNegVector, pos: new Vector3(-1.5, 0.125, 1) },
     ],
   },
   "helix-large-quarter-right": {
     joints: [
       { dir: zNegVector, pos: new Vector3(-1, 0.625, -1.5) },
-      { dir: xVector, pos: new Vector3(1.5, 0.125, 1) }
+      { dir: xVector, pos: new Vector3(1.5, 0.125, 1) },
     ],
   },
   "helix-left": {
     joints: [
       { dir: xVector, pos: new Vector3(0, 2.125, 1.5) },
-      { dir: xNegVector, pos: new Vector3(0, 0.125, 1.5) }
+      { dir: xNegVector, pos: new Vector3(0, 0.125, 1.5) },
     ],
   },
   "helix-right": {
     joints: [
       { dir: xNegVector, pos: new Vector3(0, 2.125, 1.5) },
-      { dir: xVector, pos: new Vector3(0, 0.125, 1.5) }
+      { dir: xVector, pos: new Vector3(0, 0.125, 1.5) },
     ],
   },
   "helix-quarter-left": {
     joints: [
       { dir: zNegVector, pos: new Vector3(0.5, 0.625, -1) },
-      { dir: xNegVector, pos: new Vector3(-1, 0.125, 0.5) }
+      { dir: xNegVector, pos: new Vector3(-1, 0.125, 0.5) },
     ],
   },
   "helix-quarter-right": {
     joints: [
       { dir: zNegVector, pos: new Vector3(-0.5, 0.625, -1) },
-      { dir: xVector, pos: new Vector3(1, 0.125, 0.5) }
+      { dir: xVector, pos: new Vector3(1, 0.125, 0.5) },
     ],
   },
-  "pachinko": {
+  pachinko: {
     Component: Pachinko,
     joints: [
       { dir: zNegVector, pos: new Vector3(0, 1.125, -0.5) },
@@ -240,7 +236,7 @@ export const blocks: IBlocks = {
       { dir: zNegVector, pos: new Vector3(0, -0.875, 0.5) },
     ],
     models: [],
-    part: 'Pck'
+    part: "Pck",
   },
   "pachinko-end": {
     Component: PachinkoEnd,
@@ -250,7 +246,7 @@ export const blocks: IBlocks = {
       { dir: zNegVector, pos: new Vector3(0, -1.375, 0.5) },
     ],
     models: [],
-    part: 'Pck End'
+    part: "Pck End",
   },
   "ramp-end-a": {
     joints: [
@@ -335,7 +331,7 @@ export const blocks: IBlocks = {
       { dir: xVector, pos: new Vector3(-0.5, -1, 0) },
     ],
     models: [],
-    part: 'Rot Cyl',
+    part: "Rot Cyl",
   },
   "s-curve-left": {
     joints: [
@@ -373,8 +369,8 @@ export const blocks: IBlocks = {
       { dir: zVector, pos: new Vector3(0, 0.375, 0.5) },
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
     ],
-    models: ['slant-a'],
-    part: 'Sl A'
+    models: ["slant-a"],
+    part: "Sl A",
   },
   "slant-b": {
     joints: [
@@ -388,8 +384,8 @@ export const blocks: IBlocks = {
       { dir: zVector, pos: new Vector3(0, 0.625, 0.5) },
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
     ],
-    models: ['slant-b'],
-    part: 'Sl B'
+    models: ["slant-b"],
+    part: "Sl B",
   },
   "slant-c": {
     joints: [
@@ -403,8 +399,8 @@ export const blocks: IBlocks = {
       { dir: zVector, pos: new Vector3(0, 1.125, 0.5) },
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
     ],
-    models: ['slant-c'],
-    part: 'Sl C'
+    models: ["slant-c"],
+    part: "Sl C",
   },
   "slant-d": {
     joints: [
@@ -418,8 +414,8 @@ export const blocks: IBlocks = {
       { dir: zVector, pos: new Vector3(0, 1.625, 0.5) },
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
     ],
-    models: ['slant-d'],
-    part: 'Sl D'
+    models: ["slant-d"],
+    part: "Sl D",
   },
   // "slant-long-a": {
   //   joints: [
@@ -487,12 +483,12 @@ export const blocks: IBlocks = {
       { dir: xVector, pos: new Vector3(1, 0.125, -0.5) },
     ],
   },
-  "start": {
+  start: {
     Component: Start,
     joints: [{ dir: zVector, pos: new Vector3(0, 0.125, 0.5) }],
     models: ["end-rounded"],
   },
-  "straight": {
+  straight: {
     joints: [
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
       { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
@@ -516,8 +512,8 @@ export const blocks: IBlocks = {
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
       { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
     ],
-    models: ['straight-wide'],
-    part: 'Str Wid'
+    models: ["straight-wide"],
+    part: "Str Wid",
   },
   "straight-wide-pilars": {
     Component: StraightWidePilars,
@@ -525,8 +521,8 @@ export const blocks: IBlocks = {
       { dir: zNegVector, pos: new Vector3(0, 0.125, -0.5) },
       { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
     ],
-    models: ['straight-wide'],
-    part: 'Str Wid2'
+    models: ["straight-wide"],
+    part: "Str Wid2",
   },
   "straight-wide-hole": {
     joints: [
@@ -534,14 +530,14 @@ export const blocks: IBlocks = {
       { dir: zVector, pos: new Vector3(0, 0.125, 0.5) },
     ],
   },
-  "tube": {
+  tube: {
     Component: Tube,
     joints: [
       { dir: zNegVector, pos: new Vector3(0, 0.125, 0) },
       { dir: zVector, pos: new Vector3(5.1, -3.25, -0.5) },
     ],
     models: [],
-    part: 'Tub'
+    part: "Tub",
   },
   "wave-a": {
     joints: [
@@ -561,4 +557,4 @@ export const blocks: IBlocks = {
       { dir: zVector, pos: new Vector3(-0.5, 0.125, 2) },
     ],
   },
-};
+}

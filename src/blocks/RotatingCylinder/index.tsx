@@ -1,7 +1,7 @@
-import { memo, useRef } from "react";
-import { RapierRigidBody, RigidBody } from "@react-three/rapier";
-import { useFrame } from "@react-three/fiber";
-import { BackSide, FrontSide } from "three";
+import { memo, useRef } from "react"
+import { RapierRigidBody, RigidBody } from "@react-three/rapier"
+import { useFrame } from "@react-three/fiber"
+import { BackSide, FrontSide } from "three"
 
 import {
   cylinderHeight,
@@ -9,35 +9,35 @@ import {
   cylinderLowRadius,
   pilarHeight,
   pilarRadius,
-} from "../../constants/blocks";
-import { IBlockProps } from "../../types";
-import { useBlock } from "../../hooks/useBlock";
+} from "../../constants/blocks"
+import { IBlockProps } from "../../types"
+import { useBlock } from "../../hooks/useBlock"
 
-import Joints from "../Joints";
+import Joints from "../Joints"
 
 const angle = Math.tanh(
-  cylinderHeight / (cylinderHighRadius - cylinderLowRadius),
-);
+  cylinderHeight / (cylinderHighRadius - cylinderLowRadius)
+)
 
 function getPosition(x: number, z: number): [number, number, number] {
   const dist = Math.sqrt(
     (Math.abs(x) - cylinderLowRadius) ** 2 +
-      (Math.abs(z) - cylinderLowRadius) ** 2,
-  );
-  const y = Math.tan(angle) * (dist - pilarRadius);
-  return [x, y - pilarHeight / 2, z];
+      (Math.abs(z) - cylinderLowRadius) ** 2
+  )
+  const y = Math.tan(angle) * (dist - pilarRadius)
+  return [x, y - pilarHeight / 2, z]
 }
 
 function RotatingCylinder(props: IBlockProps) {
-  const { id, joints, position: pos, rotation: rot, ...groupProps } = props;
-  const { position, rotation } = useBlock(pos, rot);
-  const ref = useRef<RapierRigidBody | null>(null);
+  const { id, joints, position: pos, rotation: rot, ...groupProps } = props
+  const { position, rotation } = useBlock(pos, rot)
+  const ref = useRef<RapierRigidBody | null>(null)
 
   useFrame(() => {
     if (ref.current) {
-      ref.current.setAngvel({ x: 0, y: 1, z: 0 }, true);
+      ref.current.setAngvel({ x: 0, y: 1, z: 0 }, true)
     }
-  }, 2);
+  }, 2)
 
   return (
     <RigidBody
@@ -118,8 +118,8 @@ function RotatingCylinder(props: IBlockProps) {
       </mesh>
       <Joints joints={joints} position={position} rotation={rotation} />
     </RigidBody>
-  );
+  )
 }
 
-const MemoRotatingCylinder = memo(RotatingCylinder);
-export default MemoRotatingCylinder;
+const MemoRotatingCylinder = memo(RotatingCylinder)
+export default MemoRotatingCylinder

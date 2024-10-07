@@ -1,20 +1,20 @@
-import { useMemo } from "react";
+import { useMemo } from "react"
 
 interface IParallelepipedProps {
-  angle?: number;
-  depth: number;
-  height: number;
-  length: number;
+  angle?: number
+  depth: number
+  height: number
+  length: number
 }
 
 export default function Parallelepiped(props: IParallelepipedProps) {
-  const { angle = 0.46364760398864746, depth, height, length } = props;
+  const { angle = 0.46364760398864746, depth, height, length } = props
   const vertices = useMemo(() => {
-    const elevation = Math.tan(angle) * length;
-    const xMin = - depth / 2;
-    const xMax = depth / 2;
-    const zMin = - length / 2;
-    const zMax = length / 2;
+    const elevation = Math.tan(angle) * length
+    const xMin = -depth / 2
+    const xMax = depth / 2
+    const zMin = -length / 2
+    const zMax = length / 2
     // prettier-ignore
     return new Float32Array([
         // Front
@@ -60,10 +60,13 @@ export default function Parallelepiped(props: IParallelepipedProps) {
         xMax, elevation + height, zMax,
         xMin, elevation + height, zMax,
       ])
-  }, [angle, depth, height, length]);
+  }, [angle, depth, height, length])
 
   return (
-    <bufferGeometry attach="geometry" onUpdate={self => self.computeVertexNormals()}>
+    <bufferGeometry
+      attach="geometry"
+      onUpdate={(self) => self.computeVertexNormals()}
+    >
       <bufferAttribute
         attach="attributes-position"
         array={vertices}
@@ -71,5 +74,5 @@ export default function Parallelepiped(props: IParallelepipedProps) {
         count={36}
       />
     </bufferGeometry>
-  );
+  )
 }

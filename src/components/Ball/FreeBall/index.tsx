@@ -1,21 +1,21 @@
-import { memo } from "react";
-import { RigidBody } from "@react-three/rapier";
-import { Vector3 } from "three";
+import { memo } from "react"
+import { RigidBody } from "@react-three/rapier"
+import { Vector3 } from "three"
 // import { TransformControls as TransformControlsImpl } from "three-stdlib";
 // import { TransformControls } from "@react-three/drei";
 
-import { IModel } from "../../../helpers/collection";
-import GLTFModel, { IModelProps } from "../../GLTFModel";
-import { IGhost } from "../../../types";
+import { IModel } from "../../../helpers/collection"
+import GLTFModel, { IModelProps } from "../../GLTFModel"
+import { IGhost } from "../../../types"
 
 interface IFreeBallProps extends IModelProps {
-  ghost: IGhost;
-  model?: IModel;
-  playerId: string;
+  ghost: IGhost
+  model?: IModel
+  playerId: string
 }
 
 function FreeBall(props: IFreeBallProps) {
-  const { ghost, model, playerId, ...modelProps } = props;
+  const { ghost, model, playerId, ...modelProps } = props
   // const startPosition = useRef(
   //   new Vector3(ghost.position.x, ghost.position.y, ghost.position.z),
   // );
@@ -52,14 +52,16 @@ function FreeBall(props: IFreeBallProps) {
   return (
     <RigidBody
       colliders="ball"
-      position={new Vector3(ghost.position.x, ghost.position.y, ghost.position.z)}
+      position={
+        new Vector3(ghost.position.x, ghost.position.y, ghost.position.z)
+      }
       restitution={0.5}
       scale={0.5}
     >
       <GLTFModel {...modelProps} model={model} />
     </RigidBody>
-  );
+  )
 }
 
-const MemoFreeBall = memo(FreeBall);
-export default MemoFreeBall;
+const MemoFreeBall = memo(FreeBall)
+export default MemoFreeBall

@@ -1,6 +1,6 @@
-import { memo } from "react";
-import { RigidBody } from "@react-three/rapier";
-import { DoubleSide, FrontSide } from "three";
+import { memo } from "react"
+import { RigidBody } from "@react-three/rapier"
+import { DoubleSide, FrontSide } from "three"
 
 import {
   pachinkoDepth,
@@ -8,11 +8,11 @@ import {
   pachinkoWidth,
   pilarRadius,
   twoThird,
-} from "../../constants/blocks";
-import { IBlockProps } from "../../types";
-import { useBlock } from "../../hooks/useBlock";
+} from "../../constants/blocks"
+import { IBlockProps } from "../../types"
+import { useBlock } from "../../hooks/useBlock"
 
-import Joints from "../Joints";
+import Joints from "../Joints"
 
 // prettier-ignore
 const plane = new Float32Array([
@@ -25,17 +25,29 @@ const plane = new Float32Array([
 ]);
 
 const quadrilateral = new Float32Array([
-  -pachinkoWidth / 2, pachinkoHeight / 2, 0,
-  -0.35, -pachinkoHeight / 2, 0,
-  pachinkoWidth / 2, pachinkoHeight / 2, 0,
-  -0.35, -pachinkoHeight / 2, 0,
-  pachinkoWidth / 2, pachinkoHeight / 2, 0,
-  0.35, -pachinkoHeight / 2, 0,
-]);
+  -pachinkoWidth / 2,
+  pachinkoHeight / 2,
+  0,
+  -0.35,
+  -pachinkoHeight / 2,
+  0,
+  pachinkoWidth / 2,
+  pachinkoHeight / 2,
+  0,
+  -0.35,
+  -pachinkoHeight / 2,
+  0,
+  pachinkoWidth / 2,
+  pachinkoHeight / 2,
+  0,
+  0.35,
+  -pachinkoHeight / 2,
+  0,
+])
 
 function PachinkoEnd(props: IBlockProps) {
-  const { id, joints, position: pos, rotation: rot, ...groupProps } = props;
-  const { position, rotation } = useBlock(pos, rot);
+  const { id, joints, position: pos, rotation: rot, ...groupProps } = props
+  const { position, rotation } = useBlock(pos, rot)
 
   return (
     <RigidBody
@@ -162,8 +174,8 @@ function PachinkoEnd(props: IBlockProps) {
       </mesh>
       <Joints joints={joints} position={position} rotation={rotation} />
     </RigidBody>
-  );
+  )
 }
 
-const MemoPachinkoEnd = memo(PachinkoEnd);
-export default MemoPachinkoEnd;
+const MemoPachinkoEnd = memo(PachinkoEnd)
+export default MemoPachinkoEnd

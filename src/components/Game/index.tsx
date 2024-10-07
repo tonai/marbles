@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { useState } from "react"
 
-import Scene from "../Scene";
+import Scene from "../Scene"
 
-import GameHeader from "../GameHeader";
-import { defaultLevel } from "../../constants/blocks";
-import { serializeLevel } from "../../helpers/level";
+import GameHeader from "../GameHeader"
+import { defaultLevel } from "../../constants/blocks"
+import { serializeLevel } from "../../helpers/level"
 
 export default function Game() {
-  const [camera, setCamera] = useState<"free" | "fp">("free");
+  const [camera, setCamera] = useState<"free" | "fp">("free")
 
   function handleCamera() {
-    setCamera((cam) => (cam === "free" ? "fp" : "free"));
+    setCamera((cam) => (cam === "free" ? "fp" : "free"))
   }
 
   function handleStart() {
-    Dusk.actions.start(serializeLevel(defaultLevel));
+    Rune.actions.start(serializeLevel(defaultLevel))
   }
 
   return (
@@ -26,5 +26,5 @@ export default function Game() {
       />
       <Scene camera={camera} />
     </>
-  );
+  )
 }

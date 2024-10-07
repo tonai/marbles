@@ -1,18 +1,18 @@
-import { memo } from "react";
-import { CuboidCollider, RigidBody } from "@react-three/rapier";
+import { memo } from "react"
+import { CuboidCollider, RigidBody } from "@react-three/rapier"
 
-import { IBlockProps } from "../../types";
-import GLTFModel from "../../components/GLTFModel";
-import { useBlock } from "../../hooks/useBlock";
-import { useGame } from "../../store/game";
+import { IBlockProps } from "../../types"
+import GLTFModel from "../../components/GLTFModel"
+import { useBlock } from "../../hooks/useBlock"
+import { useGame } from "../../store/game"
 
-import Joints from "../Joints";
+import Joints from "../Joints"
 
 function End(props: IBlockProps) {
-  const { id, joints, position: pos, rotation: rot, ...groupProps } = props;
-  const { position, rotation } = useBlock(pos, rot);
-  const models = useGame(state => state.models);
-  
+  const { id, joints, position: pos, rotation: rot, ...groupProps } = props
+  const { position, rotation } = useBlock(pos, rot)
+  const models = useGame((state) => state.models)
+
   return (
     <RigidBody
       {...groupProps}
@@ -35,8 +35,8 @@ function End(props: IBlockProps) {
       />
       <Joints joints={joints} position={position} rotation={rotation} />
     </RigidBody>
-  );
+  )
 }
 
-const MemoEnd = memo(End);
-export default MemoEnd;
+const MemoEnd = memo(End)
+export default MemoEnd

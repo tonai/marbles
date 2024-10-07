@@ -1,57 +1,53 @@
-import { RigidBody } from "@react-three/rapier";
-import { useFrame } from "@react-three/fiber";
-import { Vector3 } from "three";
+import { RigidBody } from "@react-three/rapier"
+// import { useFrame } from "@react-three/fiber"
+import { Vector3 } from "three"
 
-import { IModel } from "../../../helpers/collection";
-import GLTFModel, { IModelProps } from "../../GLTFModel";
-import { memo, useRef } from "react";
-import { Vector } from "../../../types";
-import { useGame } from "../../../store/game";
+import { IModel } from "../../../helpers/collection"
+import GLTFModel, { IModelProps } from "../../GLTFModel"
+import { memo, useRef } from "react"
+// import { Vector } from "../../../types"
+import { useGame } from "../../../store/game"
 
 interface IPlayerBallProps extends IModelProps {
-  model: IModel;
+  model: IModel
 }
 
 function PlayerBall(props: IPlayerBallProps) {
-  const { model, ...modelProps } = props;
-  const playerId = useGame(state => state.playerId);
-  const ballRef = useGame(state => state.ballRef);
-  const ghost = useGame(state => state.ghosts[state.playerId]);
-  const prevPosition = useRef<Vector>(ghost.position);
+  const { model, ...modelProps } = props
+  const ballRef = useGame((state) => state.ballRef)
+  const ghost = useGame((state) => state.ghosts[state.playerId])
   const startPosition = useRef(
-    new Vector3(
-      ghost.position.x,
-      ghost.position.y,
-      ghost.position.z,
-    ),
-  );
-  const counter = useRef(-1);
+    new Vector3(ghost.position.x, ghost.position.y, ghost.position.z)
+  )
 
-  useFrame(() => {
-    const position = ballRef.current?.translation();
-    if (position) {
-      if (counter.current === 0) {
-        Dusk.actions.updateGhost({
-          playerId,
-          position: {
-            x: position.x,
-            y: position.y,
-            z: position.z,
-          },
-          movement: {
-            x: position.x - prevPosition.current.x,
-            y: position.y - prevPosition.current.y,
-            z: position.z - prevPosition.current.z,
-          },
-        });
-      }
-      prevPosition.current = position;
-      counter.current++;
-      if (counter.current === 8) {
-        counter.current = 0;
-      }
-    }
-  }, 2);
+  // const playerId = useGame((state) => state.playerId)
+  // const prevPosition = useRef<Vector>(ghost.position)
+  // const counter = useRef(-1)
+  // useFrame(() => {
+  //   const position = ballRef.current?.translation()
+  //   if (position) {
+  //     if (counter.current === 0) {
+  //       Rune.actions.updateGhost({
+  //         playerId,
+  //         position: {
+  //           x: position.x,
+  //           y: position.y,
+  //           z: position.z,
+  //         },
+  //         movement: {
+  //           x: position.x - prevPosition.current.x,
+  //           y: position.y - prevPosition.current.y,
+  //           z: position.z - prevPosition.current.z,
+  //         },
+  //       })
+  //     }
+  //     prevPosition.current = position
+  //     counter.current++
+  //     if (counter.current === 8) {
+  //       counter.current = 0
+  //     }
+  //   }
+  // }, 2)
 
   return (
     <RigidBody
@@ -63,8 +59,8 @@ function PlayerBall(props: IPlayerBallProps) {
     >
       <GLTFModel {...modelProps} model={model} />
     </RigidBody>
-  );
+  )
 }
 
-const MemoPlayerBall = memo(PlayerBall);
-export default MemoPlayerBall;
+const MemoPlayerBall = memo(PlayerBall)
+export default MemoPlayerBall

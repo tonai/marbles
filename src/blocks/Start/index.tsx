@@ -1,17 +1,17 @@
-import { memo } from "react";
-import { RigidBody } from "@react-three/rapier";
+import { memo } from "react"
+import { RigidBody } from "@react-three/rapier"
 
-import GLTFModel from "../../components/GLTFModel";
-import { IBlockProps } from "../../types";
-import { useBlock } from "../../hooks/useBlock";
-import { useGame } from "../../store/game";
+import GLTFModel from "../../components/GLTFModel"
+import { IBlockProps } from "../../types"
+import { useBlock } from "../../hooks/useBlock"
+import { useGame } from "../../store/game"
 
-import Joints from "../Joints";
+import Joints from "../Joints"
 
 function Start(props: IBlockProps) {
-  const { id, joints, position: pos, rotation: rot, ...groupProps } = props;
-  const { position, rotation } = useBlock(pos, rot);
-  const models = useGame(state => state.models);
+  const { id, joints, position: pos, rotation: rot, ...groupProps } = props
+  const { position, rotation } = useBlock(pos, rot)
+  const models = useGame((state) => state.models)
 
   return (
     <RigidBody
@@ -23,10 +23,10 @@ function Start(props: IBlockProps) {
     >
       <GLTFModel model={models?.["end-rounded"]} rotation={[0, -Math.PI, 0]} />
       {/* <GLTFModel model={models['ramp-long-b']} rotation={[0, -Math.PI, 0]} z={1} y={-0.5} /> */}
-      <Joints joints={joints} position={position} rotation={rotation}/>
+      <Joints joints={joints} position={position} rotation={rotation} />
     </RigidBody>
-  );
+  )
 }
 
-const MemoStart = memo(Start);
-export default MemoStart;
+const MemoStart = memo(Start)
+export default MemoStart

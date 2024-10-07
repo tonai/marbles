@@ -1,6 +1,6 @@
-import { Euler, Vector3 } from "three";
+import { Euler, Vector3 } from "three"
 
-import { ILevel, ISerializedLevel } from "../types";
+import { ILevel, ISerializedLevel } from "../types"
 
 export function serializeLevel(level: ILevel): ISerializedLevel {
   return level.map((block) => ({
@@ -15,7 +15,7 @@ export function serializeLevel(level: ILevel): ISerializedLevel {
       y: block.rotation.y,
       z: block.rotation.z,
     },
-  }));
+  }))
 }
 
 export function deserializeLevel(level: ISerializedLevel): ILevel {
@@ -27,5 +27,5 @@ export function deserializeLevel(level: ISerializedLevel): ILevel {
     rotation:
       block.rotation &&
       new Euler(block.rotation.x, block.rotation.y, block.rotation.z),
-  }));
+  }))
 }

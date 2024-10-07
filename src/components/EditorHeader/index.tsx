@@ -1,23 +1,23 @@
-import classNames from "classnames";
-import { useState } from "react";
+import classNames from "classnames"
+import { useState } from "react"
 
-import { ILevel, ISelectedJoint } from "../../types";
+import { ILevel, ISelectedJoint } from "../../types"
 
-import styles from "./styles.module.css";
-import { blocks } from "../../blocks";
-import { partMenu } from "../../constants/blocks";
-import { useGame } from "../../store/game";
-import { serializeLevel } from "../../helpers/level";
+import styles from "./styles.module.css"
+import { blocks } from "../../blocks"
+import { partMenu } from "../../constants/blocks"
+import { useGame } from "../../store/game"
+import { serializeLevel } from "../../helpers/level"
 
 interface IHeaderProps {
-  jointSelection?: ISelectedJoint;
-  level: ILevel;
-  onRemove: () => void;
-  onSelect: (part: string) => void;
-  onStart: () => void;
-  onSwitch: () => void;
-  parts: Record<string, number>;
-  selectedPart?: string;
+  jointSelection?: ISelectedJoint
+  level: ILevel
+  onRemove: () => void
+  onSelect: (part: string) => void
+  onStart: () => void
+  onSwitch: () => void
+  parts: Record<string, number>
+  selectedPart?: string
 }
 
 export default function EditorHeader(props: IHeaderProps) {
@@ -30,20 +30,20 @@ export default function EditorHeader(props: IHeaderProps) {
     onSwitch,
     parts,
     selectedPart,
-  } = props;
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [subMenu, setSubMenu] = useState<string>();
-  const start = useGame((state) => state.start);
+  } = props
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [subMenu, setSubMenu] = useState<string>()
+  const start = useGame((state) => state.start)
 
   function handleMenu() {
-    setMenuOpen((x) => !x);
+    setMenuOpen((x) => !x)
   }
 
   function handleSubMenu(label: string) {
     if (subMenu === label) {
-      setSubMenu(undefined);
+      setSubMenu(undefined)
     } else {
-      setSubMenu(label);
+      setSubMenu(label)
     }
   }
 
@@ -114,5 +114,5 @@ export default function EditorHeader(props: IHeaderProps) {
         Export
       </button>
     </header>
-  );
+  )
 }

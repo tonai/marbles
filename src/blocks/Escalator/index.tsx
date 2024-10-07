@@ -1,36 +1,36 @@
-import { memo, useEffect, useRef } from "react";
-import { RapierRigidBody, RigidBody } from "@react-three/rapier";
-import { BackSide } from "three";
+import { memo, useEffect, useRef } from "react"
+import { RapierRigidBody, RigidBody } from "@react-three/rapier"
+import { BackSide } from "three"
 
-import { IBlockProps } from "../../types";
-import { useBlock } from "../../hooks/useBlock";
+import { IBlockProps } from "../../types"
+import { useBlock } from "../../hooks/useBlock"
 
-import Joints from "../Joints";
-import Parallelepiped from "../../shapes/Parallelepiped";
-import { useFrame } from "@react-three/fiber";
+import Joints from "../Joints"
+import Parallelepiped from "../../shapes/Parallelepiped"
+import { useFrame } from "@react-three/fiber"
 
-const delta = 0.25;
-const speed = 0.1;
+const delta = 0.25
+const speed = 0.1
 
 function Escalator(props: IBlockProps) {
-  const { id, joints, position: pos, rotation: rot, ...groupProps } = props;
-  const { position, rotation } = useBlock(pos, rot);
-  const bodyRef1 = useRef<RapierRigidBody | null>(null);
-  const bodyRef2 = useRef<RapierRigidBody | null>(null);
-  const bodyRef3 = useRef<RapierRigidBody | null>(null);
-  const bodyRef4 = useRef<RapierRigidBody | null>(null);
-  const bodyRef5 = useRef<RapierRigidBody | null>(null);
-  const bodyRef6 = useRef<RapierRigidBody | null>(null);
-  const bodyRef7 = useRef<RapierRigidBody | null>(null);
-  const bodyRef8 = useRef<RapierRigidBody | null>(null);
-  const startYPos = useRef(0);
-  const dir = useRef(speed);
+  const { id, joints, position: pos, rotation: rot, ...groupProps } = props
+  const { position, rotation } = useBlock(pos, rot)
+  const bodyRef1 = useRef<RapierRigidBody | null>(null)
+  const bodyRef2 = useRef<RapierRigidBody | null>(null)
+  const bodyRef3 = useRef<RapierRigidBody | null>(null)
+  const bodyRef4 = useRef<RapierRigidBody | null>(null)
+  const bodyRef5 = useRef<RapierRigidBody | null>(null)
+  const bodyRef6 = useRef<RapierRigidBody | null>(null)
+  const bodyRef7 = useRef<RapierRigidBody | null>(null)
+  const bodyRef8 = useRef<RapierRigidBody | null>(null)
+  const startYPos = useRef(0)
+  const dir = useRef(speed)
 
   useEffect(() => {
     if (bodyRef1.current) {
-      startYPos.current = bodyRef1.current.translation().y;
+      startYPos.current = bodyRef1.current.translation().y
     }
-  }, []);
+  }, [])
 
   useFrame(() => {
     if (
@@ -43,22 +43,22 @@ function Escalator(props: IBlockProps) {
       bodyRef7.current &&
       bodyRef8.current
     ) {
-      const y = bodyRef1.current.translation().y - startYPos.current;
+      const y = bodyRef1.current.translation().y - startYPos.current
       if (y >= delta) {
-        dir.current = -speed;
+        dir.current = -speed
       } else if (y <= 0) {
-        dir.current = speed;
+        dir.current = speed
       }
-      bodyRef1.current.setLinvel({ x: 0, y: dir.current, z: 0 }, true);
-      bodyRef2.current.setLinvel({ x: 0, y: -dir.current, z: 0 }, true);
-      bodyRef3.current.setLinvel({ x: 0, y: -dir.current, z: 0 }, true);
-      bodyRef4.current.setLinvel({ x: 0, y: dir.current, z: 0 }, true);
-      bodyRef5.current.setLinvel({ x: 0, y: dir.current, z: 0 }, true);
-      bodyRef6.current.setLinvel({ x: 0, y: -dir.current, z: 0 }, true);
-      bodyRef7.current.setLinvel({ x: 0, y: -dir.current, z: 0 }, true);
-      bodyRef8.current.setLinvel({ x: 0, y: dir.current, z: 0 }, true);
+      bodyRef1.current.setLinvel({ x: 0, y: dir.current, z: 0 }, true)
+      bodyRef2.current.setLinvel({ x: 0, y: -dir.current, z: 0 }, true)
+      bodyRef3.current.setLinvel({ x: 0, y: -dir.current, z: 0 }, true)
+      bodyRef4.current.setLinvel({ x: 0, y: dir.current, z: 0 }, true)
+      bodyRef5.current.setLinvel({ x: 0, y: dir.current, z: 0 }, true)
+      bodyRef6.current.setLinvel({ x: 0, y: -dir.current, z: 0 }, true)
+      bodyRef7.current.setLinvel({ x: 0, y: -dir.current, z: 0 }, true)
+      bodyRef8.current.setLinvel({ x: 0, y: dir.current, z: 0 }, true)
     }
-  }, 2);
+  }, 2)
 
   /*
   const startTime = useGame((state) => state.startTime);
@@ -290,8 +290,8 @@ function Escalator(props: IBlockProps) {
         </mesh>
       </RigidBody>
     </>
-  );
+  )
 }
 
-const MemoEscalator = memo(Escalator);
-export default MemoEscalator;
+const MemoEscalator = memo(Escalator)
+export default MemoEscalator
